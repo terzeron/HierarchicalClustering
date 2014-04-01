@@ -5,7 +5,7 @@ CC=g++
 GCCMAKEDEP=/usr/X11R6/bin/gccmakedep
 
 EXES=hcluster test
-OBJS=common.o cluster.o cluster_table.o keyword_table.o levenshtein.o util.o hcluster.o
+OBJS=common.o cluster.o cluster_table.o keyword_table.o levenshtein.o util.o
 SRCS=$(OBJS:.o=.cc)
 
 CFLAGS+=-m64 -Wall -O2 -g -c
@@ -22,13 +22,13 @@ all: $(EXES) retags
 retags:
 	etags *.h *.cc
 
-hcluster: $(OBJS)
+hcluster: hcluster.o $(OBJS)
 	@echo '+------------------------------------------+'
 	@echo '| HCLUSTER                                 |'
 	@echo '+------------------------------------------+'
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-test: $(OBJS)
+test: test.o $(OBJS)
 	@echo '+------------------------------------------+'
 	@echo '| test                                     |'
 	@echo '+------------------------------------------+'

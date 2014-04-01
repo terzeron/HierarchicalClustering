@@ -37,3 +37,5 @@ size_t lev_distance_wstr(size_t len1, wchar_t* string1,
 size_t lev_distance(size_t len1, const char* string1, 
                     size_t len2, const char* string2);
 int get_levenshtein_distance(string str1, string str2, double* ratio = NULL);
+int convert_mbs_to_wcs(string str, wchar_t* wcs);
+int get_ucs4_levenshtein_distance(string str1, string str2, double* ratio = NULL);
