@@ -16,7 +16,7 @@
 using namespace std;
 
 
-int read_file_into_unordered_set(string& file_path, unordered_set<string, string_hash_t>& hs);
+int read_file_into_unordered_set(string& file_path, unordered_set<string>& hs);
 
 int read_file_into_vector(string& file_path, vector<string>& v);
 

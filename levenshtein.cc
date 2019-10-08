@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cerrno>
+#include <string.h>
 
 #include "common.h"
 

@@ -8,7 +8,7 @@ EXES=hcluster test
 OBJS=common.o cluster.o cluster_table.o keyword_table.o levenshtein.o util.o
 SRCS=$(OBJS:.o=.cc)
 
-CFLAGS+=-m64 -Wall -O2 -g -c
+CFLAGS+=-m64 -Wall -O2 -g -c -std=c++11
 LDFLAGS+=-m64 -Wall -g
 
 .cc.o:

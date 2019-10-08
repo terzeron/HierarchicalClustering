@@ -18,7 +18,7 @@ class KeywordTable
 {
 private:
     vector<string> keyword_list;
-    unordered_map<string, double, string_hash_t> keyword_similarity_map;
+    unordered_map<string, double> keyword_similarity_map;
 
 public:
     KeywordTable();

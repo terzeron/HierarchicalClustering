@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 
 #include "keyword_table.h"
 #include "util.h"
@@ -46,7 +47,7 @@ uint KeywordTable::get_num_cluster_pairs(void)
 double KeywordTable::get(string& keyword1, string& keyword2) 
 {
     string key = keyword1 + "\t" + keyword2;
-    unordered_map<string, double, string_hash_t>::iterator iter =
+    unordered_map<string, double>::iterator iter =
         keyword_similarity_map.find(key);
     if (iter != keyword_similarity_map.end()) {
         return iter->second;
@@ -70,7 +71,7 @@ void KeywordTable::set(string& keyword1, string& keyword2, double similarity)
 
 void KeywordTable::print_similarity(void) 
 {
-    unordered_map<string, double, string_hash_t>::iterator iter;
+    unordered_map<string, double>::iterator iter;
     for (iter = keyword_similarity_map.begin();
          iter != keyword_similarity_map.end(); ++iter) {
         cout << iter->first << "\t" << iter->second << endl;

@@ -1,12 +1,15 @@
 #include <iostream>
 #include <fstream>
 #include <queue>
+#include <algorithm>
 #include <unordered_map>
 #include <unordered_set>
 //#include <ext/hash_fun.h>
 #include <cerrno>
 #include <dirent.h>
 #include <getopt.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "common.h"
 #include "keyword_table.h"
@@ -34,9 +37,9 @@ void print_usage(string program_name)
 
 class StopWordRemover {
 private:
-	unordered_set<string, string_hash_t> stop_words;
+	unordered_set<string> stop_words;
 public:
-	StopWordRemover(unordered_set<string, string_hash_t> _stop_words) { 
+	StopWordRemover(unordered_set<string> _stop_words) { 
 		stop_words = _stop_words;
 	}
 	void operator() (string& keyword) { 
@@ -44,7 +47,7 @@ public:
 					   keyword.begin(), (int (*)(int))std::tolower);
 		
         // remove stop words from original string
-        for (unordered_set<string, string_hash_t>::iterator stop_iter = stop_words.begin();
+        for (unordered_set<string>::iterator stop_iter = stop_words.begin();
 			 stop_iter != stop_words.end(); ++stop_iter) {
 			string stop_word = *stop_iter;
 			while (1) {
@@ -70,7 +73,7 @@ int read_input(string input_file_path, string stop_words_file_path,
 #endif // VERBOSE
 
 	// make up the stop word set
-	unordered_set<string, string_hash_t> stop_hs;
+	unordered_set<string> stop_hs;
 	if (stop_words_file_path != "") {
 		read_file_into_unordered_set(stop_words_file_path, stop_hs);
 	}

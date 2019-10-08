@@ -10,6 +10,7 @@
 #include <vector>
 #include <unordered_set>
 #include <cerrno>
+#include <string.h>
 
 #include "common.h"
 
@@ -17,7 +18,7 @@
 using namespace std;
 
 
-int read_file_into_unordered_set(string& file_path, unordered_set<string, string_hash_t>& hs) 
+int read_file_into_unordered_set(string& file_path, unordered_set<string>& hs) 
 {
 	ifstream fstrm;
 	char line[MAX_LINE_LEN];

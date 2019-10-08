@@ -14,10 +14,4 @@ extern const double default_similarity_threshold;
 extern double similarity_threshold;
 
 
-typedef struct _string_hash {
-    size_t operator()(const string& s) const {
-        return hash<const char *>()(s.c_str());
-    }
-} string_hash_t;
-
 #endif // __COMMON_H__
